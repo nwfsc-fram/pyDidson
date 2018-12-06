@@ -5,11 +5,6 @@ import time
 import csv
 import datetime
 
-# Current test files
-strFile = "Z:\\Habitat\\Data\\UHSI\\DIDSON\\2014\\UHSI_DIDSON_NWFSC\\UHSI.DIDSON.NWFSC.August.11.07\\2014-08-09_210855_HF_S001.ddf"
-strFile = "Z:\\Habitat\\Data\\UHSI\\DIDSON\\2015\\UHSI.DIDSON.2015.NW\\UHSI.2015.Station.07\\102\\2015-08-04_#195.ddf"
-strFile = "C:\\Users\\Nicholas.Shaffer\\Desktop\\2016-10-29_183900_SyncOut.ddf"
-
 # size = struct.calcsize("III?IfIIII?I32c256ciiiiII?IiIIIII120p")
 # size = struct.calcsize("?")
 # size = struct.calcsize("32c")
@@ -41,324 +36,6 @@ StructSizes = {
         "120p": 120
     }
 
-dictFrameAttributes = {
-    "FrameNumber": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    }, 
-    "FrameTime": {
-        "Type": "8c",
-        "Size" : 8,
-        "Value" : None
-    },
-    "Version": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Status": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Year": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Month": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Day": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Hour": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Minute": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Second": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "H Second": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Transmit Mode": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Window Start": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Window Length": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Threshhold": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Intensity": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Receiver Gain": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Power Supply Temp C": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "A/D Temp C": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Humidity": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Focus": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Battery": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 1": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 2": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 3": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 4": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 5": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 6": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 7": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "User Value 8": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Velocity": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Depth": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Altitude": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Pitch": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Pitch Rate": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Roll": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Roll Rate": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    }, 
-    "Heading": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Heading Rate": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Compass Heading": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Compass Pitch": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Compass Roll": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Latitude": {
-        "Type": "d",
-        "Size" : 8,
-        "Value" : None
-    },
-    "Longitude": {
-        "Type": "d",
-        "Size" : 8,
-        "Value" : None
-    },
-    "Sonar Position": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Config Flags": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Beam Tilt": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Target Range": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Target Bearing": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Target Present": {
-        "Type": "?",
-        "Size" : 1,
-        "Value" : None
-    },
-    "Firmware Revision": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Flags": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Source Frame": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Water Temp": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Timer Period": {
-        "Type": "I",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar X": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar Y": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar Z": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar Pan": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar Tilt": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Sonar Roll": {
-        "Type": "f",
-        "Size" : 4,
-        "Value" : None
-    },
-    "Data LF": {
-        "Type": "24576c",
-        "Size" : 24576,
-        "Value" : None
-    },
-    "Data HF": {
-        "Type": "49152c",
-        "Size" : 49152,
-        "Value" : None
-    }
-}
-
 dictTupleLengths = {
     "f": 1,
     "I": 1,
@@ -367,158 +44,126 @@ dictTupleLengths = {
     "d": 1,
     "8c": 8,
     "4c": 4,
+    "32c": 32,
+    "120p": 120,
+    "256c": 256,
+    "49152c": 49152,
+    "24576c": 24576
+}
+
+dictByteSizes = {
+    "f": 4,
+    "I": 4,
+    "i": 4,
+    "?": 1,
+    "d": 8,
+    "8c": 8,
+    "4c": 4,
+    "32c": 32,
+    "120p": 120,
     "256c": 256,
     "49152c": 49152,
     "24576c": 24576
 }
 
 dictMasterAttributes = {
-    "Version": {
-        "Type": "4c",
-        "Size" : 4,
-        "Value" : None
-    },
-    "FrameTotal": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "FrameRate": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "HighResolution": {
-        "Type": "?",
-        "Size" : 1,
-        "Value" : None
-    },
-    "NumRawBeams": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "SampleRate": {
-        "Type": "f",
-        "Size" : 1,
-        "Value" : None
-    },
-    "SamplesPerChannel": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "ReceiverGain": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "WindowStart": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "WindowLength": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "Reverse": {
-        "Type": "?",
-        "Size" : 1,
-        "Value" : None
-    },
-    "SN": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "Date": {
-        "Type": "32c",
-        "Size" : 32,
-        "Value" : None
-    },
-    "HeaderID": {
-        "Type": "256c",
-        "Size" : 256,
-        "Value" : None
-    },
-    "UserID1": {
-        "Type": "i",
-        "Size" : 1,
-        "Value" : None
-    },
-    "UserID2": {
-        "Type": "i",
-        "Size" : 1,
-        "Value" : None
-    },
-    "UserID3": {
-        "Type": "i",
-        "Size" : 1,
-        "Value" : None
-    },
-    "UserID4": {
-        "Type": "i",
-        "Size" : 1,
-        "Value" : None
-    },
-    "StartFrame": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "EndFrame": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "TimeLapse": {
-        "Type": "?",
-        "Size" : 1,
-        "Value" : None
-    },
-    "RecordInterval": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "RadioSeconds": {
-        "Type": "i",
-        "Size" : 1,
-        "Value" : None
-    },
-    "FrameInterval": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "Flags": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "AuxFlags": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "Sspd": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    },
-    "3DFlags": {
-        "Type": "I",
-        "Size" : 1,
-        "Value" : None
-    }
-    # "RsvdData": {
-    #     "Type": "120p",
-    #     "Size" : 120,
-    #     "Value" : None
-    # }
+    "Version": "4c",
+    "FrameTotal": "I",
+    "FrameRate": "I",
+    "HighResolution": "?",
+    "NumRawBeams": "I",
+    "SampleRate": "f",
+    "SamplesPerChannel": "I",
+    "ReceiverGain": "I",
+    "WindowStart": "I",
+    "WindowLength": "I",
+    "Reverse": "?",
+    "SN": "I",
+    "Date": "32c",
+    "HeaderID": "256c",
+    "UserID1": "i",
+    "UserID2": "i",
+    "UserID3": "i",
+    "UserID4": "i",
+    "StartFrame":"I",
+    "EndFrame": "I",
+    "TimeLapse": "?",
+    "RecordInterval": "I",
+    "RadioSeconds": "i",
+    "FrameInterval": "I",
+    "Flags": "I",
+    "AuxFlags": "I",
+    "Sspd": "I",
+    "3DFlags": "I"
+    #"RsvdData": "120p"
 }
+
+dictFrameAttributes = {
+    "FrameNumber": "I", 
+    "FrameTime": "8c",
+    "Version": "I",
+    "Status": "I",
+    "Year": "I",
+    "Month": "I",
+    "Day": "I",
+    "Hour": "I",
+    "Minute": "I",
+    "Second": "I",
+    "H Second": "I",
+    "Transmit Mode": "I",
+    "Window Start": "I",
+    "Window Length": "I",
+    "Threshhold": "I",
+    "Intensity": "I",
+    "Receiver Gain": "I",
+    "Power Supply Temp C": "I",
+    "A/D Temp C": "I",
+    "Humidity": "I",
+    "Focus": "I",
+    "Battery": "I",
+    "User Value 1": "f",
+    "User Value 2": "f",
+    "User Value 3": "f",
+    "User Value 4": "f",
+    "User Value 5": "f",
+    "User Value 6": "f",
+    "User Value 7": "f",
+    "User Value 8": "f",
+    "Velocity": "f",
+    "Depth": "f",
+    "Altitude": "f",
+    "Pitch": "f",
+    "Pitch Rate": "f",
+    "Roll": "f",
+    "Roll Rate": "f", 
+    "Heading": "f",
+    "Heading Rate": "f",
+    "Compass Heading": "f",
+    "Compass Pitch": "f",
+    "Compass Roll": "f",
+    "Latitude": "d",
+    "Longitude": "d",
+    "Sonar Position": "f",
+    "Config Flags": "I",
+    "Beam Tilt": "f",
+    "Target Range": "f",
+    "Target Bearing": "f",
+    "Target Present": "?",
+    "Firmware Revision": "I",
+    "Flags": "I",
+    "Source Frame": "I",
+    "Water Temp": "f",
+    "Timer Period": "I",
+    "Sonar X": "f",
+    "Sonar Y": "f",
+    "Sonar Z": "f",
+    "Sonar Pan": "f",
+    "Sonar Tilt": "f",
+    "Sonar Roll": "f",
+    "Data LF": "24576c",
+    "Data HF": "49152c"
+}
+
 
 # Recursively gets a list of all files, their sub directories, and their
 # attributes in the given directory tree 
@@ -619,16 +264,24 @@ def lstGetFileAttributes(FullFilePath):
 
 def lstGetDidsonMasterHeader(FullFilePath):
     #Open file to read header information in the first 512 bytes
-    dictMasterHeader = dictMasterAttributes
     lstAttributes = list()
+    lstNames = list()
+    strFormat = ''
 
     with open(FullFilePath, mode='rb') as didsonFile:
         fileContent = didsonFile.read(512)
-        tupAllAttributes = struct.unpack('4cII?IfIIII?I32c256ciiiiII?IiIIIII120p', fileContent[0:512])
+
+        for i in dictMasterAttributes:
+            strFormat += dictMasterAttributes[i]
+    
+        byBuffer = struct.calcsize(strFormat)
+
+        tupAllAttributes = struct.unpack(strFormat, fileContent[0:byBuffer])
         iTupleCount = 0
 
-        for Attribute in dictMasterHeader:
-            iTupleSize = dictMasterHeader[Attribute]["Size"]
+        for Attribute in dictMasterAttributes:
+            strType = dictMasterAttributes[Attribute]
+            iTupleSize = dictTupleLengths[strType]
             Value = None
 
             if iTupleSize == 1: 
@@ -657,23 +310,24 @@ def lstGetAllDidsonFrames(FullFilePath, iFrameTotal, strDataType, strDictIgnore)
 
         for i in dictFrameAttributes:
             if i != strDictIgnore:
-                strFormat += dictFrameAttributes[i]["Type"]
+                strFormat += dictFrameAttributes[i]
                 lstNames.append(i)
 
         lstFrames.append(lstNames)
         #iFrameSize = dictFrameAttributes[strDataType]["Size"] + 256
         iFrameSize = struct.calcsize(strFormat)
 
-        for i in range(iFrameTotal+1):
+        for _ in range(iFrameTotal+1):
             tupFrameAttributes = struct.unpack(strFormat, fileContent[iFrameStartByte: iFrameStartByte + iFrameSize])
             iTupleCount = 0
             lstAttributes = list()
+
             for Attribute in dictFrameAttributes:
                 if Attribute != strDictIgnore:
-                    strType = dictFrameAttributes[Attribute]["Type"]
+                    strType = dictFrameAttributes[Attribute]
                     iTupleSize = dictTupleLengths[strType]
+                    iByteSize = dictByteSizes[strType]
                     Value = None
-                    iSize = dictFrameAttributes[Attribute]["Size"]
 
                     if iTupleSize == 1: 
                         Value = tupFrameAttributes[iTupleCount]
@@ -683,8 +337,8 @@ def lstGetAllDidsonFrames(FullFilePath, iFrameTotal, strDataType, strDictIgnore)
                     #         Value += tupFrameAttributes[j]
                     #     Value = Value.decode()
 
-                    bCurrentBytes = fileContent[iCurrentByte: iCurrentByte + iSize]
-                    iCurrentByte += iSize
+                    bCurrentBytes = fileContent[iCurrentByte: iCurrentByte + iByteSize]
+                    iCurrentByte += iByteSize
                     iTupleCount += iTupleSize
                     lstAttributes.append([Attribute, Value])
 
@@ -695,7 +349,14 @@ def lstGetAllDidsonFrames(FullFilePath, iFrameTotal, strDataType, strDictIgnore)
     return lstFrames
 
 
-#test = lstDidsonMasterHeader(strFile)
+
+# Current test files
+#strFile = "Z:\\Habitat\\Data\\UHSI\\DIDSON\\2014\\UHSI_DIDSON_NWFSC\\UHSI.DIDSON.NWFSC.August.11.07\\2014-08-09_210855_HF_S001.ddf"
+#strFile = "Z:\\Habitat\\Data\\UHSI\\DIDSON\\2015\\UHSI.DIDSON.2015.NW\\UHSI.2015.Station.07\\102\\2015-08-04_#195.ddf"
+strFile = "C:\\Users\\Nicholas.Shaffer\\Desktop\\2016-10-29_183900_SyncOut.ddf"
+
+
+test = lstGetDidsonMasterHeader(strFile)
 test = lstGetAllDidsonFrames(strFile, 719, 'Data HF', 'Data LF')
 print('DONE.')
 
@@ -706,9 +367,7 @@ print('DONE.')
 
 
 
-# TODO edit dictMasterHeader/Size, reference dictTupleLengths instead in lstGetDidsonMasterHeader
-# TODO edit lstGetDidsonMasterHeader size, get size instead of hardcoding, for standardizing
-# TODO lstGetAllDidsonFrames is unfinished. Needs finalizing/testing. Compare raw bytes to string. 
+# TODO lstGetAllDidsonFrames is unfinished. Still has issues. Needs finalizing/testing. Compare raw bytes to string. 
 # TODO add better/more comments for documentation
 
 
